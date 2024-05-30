@@ -1,12 +1,12 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {VehicleUsageListComponent} from './vehicle-usage-list.component';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpLoaderFactory} from '../../app.module';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { VehicleUsageListComponent } from './task-list.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../../app.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('VehicleUsageListComponent', () => {
   let component: VehicleUsageListComponent;
@@ -19,17 +19,16 @@ describe('VehicleUsageListComponent', () => {
           loader: {
             provide: TranslateLoader,
             useFactory: HttpLoaderFactory,
-            deps: [HttpClient]
-          }
+            deps: [HttpClient],
+          },
         }),
         HttpClientModule,
         BrowserAnimationsModule,
         MatDialogModule,
-        MatSnackBarModule
+        MatSnackBarModule,
       ],
-      declarations: [VehicleUsageListComponent]
-    })
-      .compileComponents();
+      declarations: [VehicleUsageListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -11,14 +11,14 @@ import { AppAuthService } from './service/app.auth.service';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { IsInRoleDirective } from './dir/is.in.role.dir';
 import { IsInRolesDirective } from './dir/is.in.roles.dir';
-import { VehicleListComponent } from './pages/tag-list/tag-list.component';
+import { TagListComponent } from './pages/tag-list/tag-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { FolderListComponent } from './pages/folder-list/folder-list.component';
 import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
-import { VehicleUsageListComponent } from './pages/vehicle-usage-list/vehicle-usage-list.component';
+import { TagListComponent } from './pages/task-usage-list/task-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NoAccessComponent } from './pages/no-access/no-access.component';
 import { AppLoginComponent } from './components/app-login/app-login.component';
@@ -30,7 +30,7 @@ import {
 } from '@angular/common/http';
 import { HttpXSRFInterceptor } from './interceptor/http.csrf.interceptor';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
-import { VehicleDetailComponent } from './pages/tag-detail/tag-detail.component';
+import { TagDetailComponent } from './pages/tag-detail/tag-detail.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatCardModule } from '@angular/material/card';
@@ -44,7 +44,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FolderDetailComponent } from './pages/folder-detail/folder-detail.component';
 import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
-import { VehicleUsageDetailComponent } from './pages/vehicle-usage-detail/vehicle-usage-detail.component';
+import { TagDetailComponent } from './pages/task-usage-detail/task-detail.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { AutofocusDirective } from './dir/autofocus-dir';
@@ -80,19 +80,19 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppComponent,
     IsInRoleDirective,
     IsInRolesDirective,
-    VehicleListComponent,
+    TagListComponent,
     FolderListComponent,
     EmployeeListComponent,
-    VehicleUsageListComponent,
+    TagUsageListComponent,
     DashboardComponent,
     NoAccessComponent,
     AppLoginComponent,
     AppHeaderComponent,
-    VehicleDetailComponent,
+    TagDetailComponent,
     ConfirmDialogComponent,
     FolderDetailComponent,
     EmployeeDetailComponent,
-    VehicleUsageDetailComponent,
+    TagUsageDetailComponent,
     AutofocusDirective,
     BaseComponent,
   ],

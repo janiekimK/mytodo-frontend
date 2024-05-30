@@ -1,31 +1,43 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { Tag } from '../../dataaccess/tag';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
 import { HeaderService } from '../../service/header.service';
-import { Router } from '@angular/router';
-import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { Vehicle } from '../../dataaccess/tag';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { VehicleUsage } from '../../dataaccess/task';
 import { BaseComponent } from '../../components/base/base.component';
+import { VehicleUsageService } from '../../service/task.service';
 
 @Component({
-  selector: 'app-tag-list',
-  templateUrl: './Tag-list.component.html',
-  styleUrls: ['./Tag-list.component.scss'],
+  selector: 'app-vehicle-usage-list',
+  templateUrl: './vehicle-usage-list.component.html',
+  styleUrls: ['./vehicle-usage-list.component.scss'],
 })
-export class TagListComponent
+export class VehicleUsageListComponent
   extends BaseComponent
   implements OnInit, AfterViewInit
 {
-  tagDataSource = new MatTableDataSource<Tag>();
+  vehicleUsageDataSource = new MatTableDataSource<VehicleUsage>();
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  columns = ['id', 'name', 'description', 'tasks'];
+  columns = [
+    'fromDate',
+    'toDate',
+    'fromLocation',
+    'toLocation',
+    'km',
+    'vehicle',
+    'employee',
+    'text',
+    'actions',
+  ];
 
   public constructor(
-    private tagService: TagService,
+    private vehicleUsageService: VehicleUsageService,
     private dialog: MatDialog,
     private headerService: HeaderService,
     private router: Router,
@@ -33,7 +45,7 @@ export class TagListComponent
     protected override translate: TranslateService
   ) {
     super(translate);
-    this.headerService.setPage('nav.tags');
+    this.headerService.setPage('nav.usage');
   }
 
   async ngOnInit() {
@@ -42,25 +54,25 @@ export class TagListComponent
 
   ngAfterViewInit() {
     if (this.paginator) {
-      this.tagDataSource.paginator = this.paginator;
+      this.vehicleUsageDataSource.paginator = this.paginator;
     }
   }
 
   reloadData() {
-    this.tagService.getList().subscribe((obj) => {
-      this.tagDataSource.data = obj;
+    this.vehicleUsageService.getList().subscribe((obj) => {
+      this.vehicleUsageDataSource.data = obj;
     });
   }
 
-  async edit(e: Tag) {
-    await this.router.navigate(['tag', e.id]);
+  async edit(e: Vehicle) {
+    await this.router.navigate(['vehicle-usage', e.id]);
   }
 
   async add() {
-    await this.router.navigate(['Tag']);
+    await this.router.navigate(['vehicle-usage']);
   }
 
-  delete(e: Tag) {
+  delete(e: VehicleUsage) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       maxWidth: '400px',
       data: {
@@ -71,7 +83,7 @@ export class TagListComponent
 
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult === true) {
-        this.tagService.delete(e.id).subscribe({
+        this.vehicleUsageService.delete(e.id).subscribe({
           next: (response) => {
             if (response.status === 200) {
               this.snackBar.open(this.deletedMessage, this.closeMessage, {

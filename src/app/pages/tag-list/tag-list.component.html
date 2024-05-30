@@ -4,12 +4,12 @@
       <span>
         <button (click)="add()" *appIsInRole="'admin'" color="primary" mat-button style="color: white">
           <mat-icon>add</mat-icon>
-          {{'vehicle.button_new' | translate}}
+          {{'tag.button_new' | translate}}
         </button>
       </span>
     </mat-toolbar>
   </div>
-  <table [dataSource]="vehicleDataSource" class="mat-elevation-z8 vehicles-table" mat-table>
+  <table [dataSource]="tagDataSource" class="mat-elevation-z8 tags-table" mat-table>
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef class="w-75 th-center" mat-header-cell></th>
       <td *matCellDef="let element" mat-cell style="text-align: end">
@@ -21,23 +21,23 @@
         </button>
       </td>
     </ng-container>
-    <ng-container matColumnDef="vehicleType">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicle.type' | translate}}</th>
+    <ng-container matColumnDef="tagType">
+      <th *matHeaderCellDef mat-header-cell>{{'tag.type' | translate}}</th>
       <td *matCellDef="let element" mat-cell>
-        <span *ngIf="element.vehicleType === 'CAR'">
-          {{ 'vehicle.typeCar' | translate }}
+        <span *ngIf="element.tagType === 'CAR'">
+          {{ 'tag.typeCar' | translate }}
         </span>
-        <span *ngIf="element.vehicleType === 'BICYCLE'">
-          {{ 'vehicle.typeBicycle' | translate }}
+        <span *ngIf="element.tagType === 'BICYCLE'">
+          {{ 'tag.typeBicycle' | translate }}
         </span>
       </td>
     </ng-container>
     <ng-container matColumnDef="licence">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicle.licence' | translate}}</th>
+      <th *matHeaderCellDef mat-header-cell>{{'Tag.licence' | translate}}</th>
       <td *matCellDef="let element" mat-cell> {{element.licence}} </td>
     </ng-container>
     <ng-container matColumnDef="description">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicle.description' | translate}}</th>
+      <th *matHeaderCellDef mat-header-cell>{{'tag.description' | translate}}</th>
       <td *matCellDef="let element" mat-cell> {{element.description}} </td>
     </ng-container>
     <tr *matHeaderRowDef="columns" mat-header-row></tr>
