@@ -4,7 +4,7 @@ import {VehicleUsageService} from './vehicle-usage.service';
 import {createSpyFromClass, Spy} from 'jasmine-auto-spies';
 import {HttpClient, HttpResponse} from '@angular/common/http';
 import {VehicleUsage} from '../dataaccess/vehicleUsage';
-import {Vehicle} from '../dataaccess/vehicle';
+import { Vehicle } from '../dataaccess/tag';
 import {Employee} from '../dataaccess/employee';
 
 describe('VehicleUsageService', () => {

@@ -1,5 +1,5 @@
-import {Vehicle} from './vehicle';
-import {Employee} from './employee';
+import { Vehicle } from './tag';
+import { Employee } from './employee';
 
 export class VehicleUsage {
   public id!: number;

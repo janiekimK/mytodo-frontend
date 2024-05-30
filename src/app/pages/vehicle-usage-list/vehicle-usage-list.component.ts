@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {HeaderService} from '../../service/header.service';
 import {MatTableDataSource} from '@angular/material/table';
-import {Vehicle} from '../../dataaccess/vehicle';
+import { Vehicle } from '../../dataaccess/tag';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatDialog} from '@angular/material/dialog';
 import {Router} from '@angular/router';

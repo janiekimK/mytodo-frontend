@@ -1,15 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {Vehicle} from '../../dataaccess/vehicle';
-import {UntypedFormBuilder, UntypedFormControl, UntypedFormGroup} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
-import {HeaderService} from '../../service/header.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
-import {TranslateService} from '@ngx-translate/core';
-import {VehicleUsage} from '../../dataaccess/vehicleUsage';
-import {Employee} from '../../dataaccess/employee';
-import {BaseComponent} from '../../components/base/base.component';
-import {VehicleUsageService} from '../../service/vehicle-usage.service';
-import {VehicleService} from '../../service/vehicle.service';
+import { Vehicle } from '../../dataaccess/tag';
+import {
+  UntypedFormBuilder,
+  UntypedFormControl,
+  UntypedFormGroup,
+} from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HeaderService } from '../../service/header.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
+import { VehicleUsage } from '../../dataaccess/vehicleUsage';
+import { Employee } from '../../dataaccess/employee';
+import { BaseComponent } from '../../components/base/base.component';
+import { VehicleUsageService } from '../../service/vehicle-usage.service';
+import { VehicleService } from '../../service/tag.service';
 import {EmployeeService} from '../../service/employee.service';
 
 @Component({

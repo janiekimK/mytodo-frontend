@@ -11,7 +11,7 @@ import { AppAuthService } from './service/app.auth.service';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { IsInRoleDirective } from './dir/is.in.role.dir';
 import { IsInRolesDirective } from './dir/is.in.roles.dir';
-import { VehicleListComponent } from './pages/vehicle-list/vehicle-list.component';
+import { VehicleListComponent } from './pages/tag-list/tag-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -30,7 +30,7 @@ import {
 } from '@angular/common/http';
 import { HttpXSRFInterceptor } from './interceptor/http.csrf.interceptor';
 import { AppHeaderComponent } from './components/app-header/app-header.component';
-import { VehicleDetailComponent } from './pages/vehicle-detail/vehicle-detail.component';
+import { VehicleDetailComponent } from './pages/tag-detail/tag-detail.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatCardModule } from '@angular/material/card';
