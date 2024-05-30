@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DepartmentListComponent } from './folder-list.component';
+import { FolderListComponent } from './folder-list.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../../app.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -8,9 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-describe('DepartmentListComponent', () => {
-  let component: DepartmentListComponent;
-  let fixture: ComponentFixture<DepartmentListComponent>;
+describe('FolderListComponent', () => {
+  let component: FolderListComponent;
+  let fixture: ComponentFixture<FolderListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -27,12 +27,12 @@ describe('DepartmentListComponent', () => {
         MatDialogModule,
         MatSnackBarModule,
       ],
-      declarations: [DepartmentListComponent],
+      declarations: [FolderListComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DepartmentListComponent);
+    fixture = TestBed.createComponent(FolderListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
