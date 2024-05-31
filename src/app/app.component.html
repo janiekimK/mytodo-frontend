@@ -7,28 +7,28 @@
   </div>
 
 
-  <mat-drawer-container class="demoapp-container">
-    <mat-drawer #drawer [opened]="true" class="demoapp-sidenav" mode="side">
+  <mat-drawer-container class="mytodofrontend-container">
+    <mat-drawer #drawer [opened]="true" class="mytodofrontend-sidenav" mode="side">
       <div>
         <div>
           <button [routerLink]="['dashboard']" color="primary" mat-button>
             <mat-icon>dashboard</mat-icon>&nbsp;{{'nav.dashboard' | translate }}</button>
         </div>
         <div>
-          <button [routerLink]="['departments']" color="primary" mat-button>
-            <mat-icon>business</mat-icon>&nbsp;{{'nav.departments' | translate }}</button>
+          <button [routerLink]="['folder']" color="primary" mat-button>
+            <mat-icon>Folder</mat-icon>&nbsp;{{'nav.folder' | translate }}</button>
         </div>
         <div>
           <button [routerLink]="['employees']" color="primary" mat-button>
-            <mat-icon>badge</mat-icon>&nbsp;{{'nav.employees' | translate }}</button>
+            <mat-icon>name</mat-icon>&nbsp;{{'nav.employees' | translate }}</button>
         </div>
         <div>
-          <button [routerLink]="['vehicles']" color="primary" mat-button>
-            <mat-icon>garage_outline</mat-icon>&nbsp;{{'nav.vehicles' | translate }}</button>
+          <button [routerLink]="['tag']" color="primary" mat-button>
+            <mat-icon>tag</mat-icon>&nbsp;{{'nav.tag' | translate }}</button>
         </div>
         <div>
-          <button [routerLink]="['vehicle-usages']" color="primary" mat-button>
-            <mat-icon>shopping_basket</mat-icon>&nbsp;{{'nav.usage' | translate }}</button>
+          <button [routerLink]="['task']" color="primary" mat-button>
+            <mat-icon>task</mat-icon>&nbsp;{{'nav.task' | translate }}</button>
         </div>
         <div *ngIf="oauthService.hasValidAccessToken()" style="margin-top: 50px">
           <button (click)="logout()" color="warn" mat-button>
@@ -48,7 +48,7 @@
       </div>
     </mat-drawer>
 
-    <div class="demoapp-sidenav-content">
+    <div class="mytodofronend-sidenav-content">
       <router-outlet></router-outlet>
     </div>
 

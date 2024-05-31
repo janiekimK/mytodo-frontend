@@ -12,11 +12,13 @@ describe('FolderService', () => {
   const fakeFolders: Folder[] = [
     {
       id: 1,
-      name: 'Folder 1',
+      title: 'Folder 1',
+      description: 'Description 1',
     },
     {
       id: 2,
-      name: 'Folder 2',
+      title: 'Folder 2',
+      description: 'Description 2',
     },
   ];
 
@@ -48,7 +50,8 @@ describe('FolderService', () => {
   it('should create a new Folder', (done: DoneFn) => {
     const newFolder: Folder = {
       id: 3,
-      name: 'Folder 3',
+      title: 'Folder 3',
+      description: 'Description 3',
     };
 
     httpSpy.post.and.nextWith(newFolder);
@@ -65,13 +68,13 @@ describe('FolderService', () => {
 
   it('should update an Folder', (done: DoneFn) => {
     const Folder = fakeFolders[0];
-    Folder.name = 'Updated Folder';
+    Folder.title = 'Updated Folder';
 
     httpSpy.put.and.nextWith(Folder);
 
     service.update(Folder).subscribe({
       next: (Folder) => {
-        expect(Folder.name).toEqual('Updated Folder');
+        expect(Folder.title).toEqual('Updated Folder');
         done();
       },
       error: done.fail,

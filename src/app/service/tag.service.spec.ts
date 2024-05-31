@@ -12,15 +12,15 @@ describe('TagService', () => {
   const fakeTags: Tag[] = [
     {
       id: 1,
-      tagType: 'CAR',
+      name: 'tag1',
       description: 'Test tag 1',
-      licence: '123',
+      task: '123',
     },
     {
       id: 2,
-      tagType: 'CAR',
+      name: 'tag2',
       description: 'Test tag 2',
-      licence: '456',
+      task: '456',
     },
   ];
 
@@ -50,11 +50,11 @@ describe('TagService', () => {
     expect(httpSpy.get.calls.count()).toBe(1);
   });
   it('should create a new tag', (done: DoneFn) => {
-    const newTag: tag = {
+    const newTag: Tag = {
       id: 3,
-      tagType: 'CAR',
+      name: 'tag3',
       description: 'Test tag 3',
-      licence: '789',
+      task: '789',
     };
 
     httpSpy.post.and.nextWith(newTag);

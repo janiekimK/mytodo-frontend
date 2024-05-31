@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VehicleListComponent } from './pages/tag-list/tag-list.component';
 import { appCanActivate } from './guard/app.auth.guard';
 import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
-import { DepartmentListComponent } from './pages/folder-list/folder-list.component';
-import { VehicleUsageListComponent } from './pages/task-usage-list/task-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NoAccessComponent } from './pages/no-access/no-access.component';
-import { VehicleDetailComponent } from './pages/tag-detail/tag-detail.component';
 import { AppRoles } from '../app.roles';
-import { DepartmentDetailComponent } from './pages/folder-detail/folder-detail.component';
 import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
-import { VehicleUsageDetailComponent } from './pages/task-detail/task-detail.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

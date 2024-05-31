@@ -1,38 +1,37 @@
 import { TestBed } from '@angular/core/testing';
 
-import { VehicleUsageService } from './task.service';
+import { TaskService } from './task.service';
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { VehicleUsage } from '../dataaccess/task';
-import { Vehicle } from '../dataaccess/tag';
+import { Task } from '../dataaccess/task';
+import { Tag } from '../dataaccess/tag';
 import { Employee } from '../dataaccess/employee';
+import { Folder } from '../dataaccess/folder';
 
-describe('VehicleUsageService', () => {
-  let service: VehicleUsageService;
+describe('TaskService', () => {
+  let service: TaskService;
   let httpSpy: Spy<HttpClient>;
 
-  const fakeVehicleUsages: VehicleUsage[] = [
+  const fakeTasks: Task[] = [
     {
       id: 1,
-      vehicle: new Vehicle(),
+      title: 'Task 1',
+      description: 'Description 1',
+      dueDate: new Date(),
+      priority: 1,
+      folder: new Folder(),
       employee: new Employee(),
-      fromDate: new Date(),
-      toDate: new Date(),
-      fromLocation: 'Basel',
-      toLocation: 'Bellinzona',
-      text: 'Work transfer',
-      km: 270,
+      tags: [new Tag()],
     },
     {
       id: 2,
-      vehicle: new Vehicle(),
+      title: 'Task 2',
+      description: 'Description 2',
+      dueDate: new Date(),
+      priority: 2,
+      folder: new Folder(),
       employee: new Employee(),
-      fromDate: new Date(),
-      toDate: new Date(),
-      fromLocation: 'Basel',
-      toLocation: 'Lugano',
-      text: 'Work transfer',
-      km: 300,
+      tags: [new Tag()],
     },
   ];
 
@@ -42,43 +41,42 @@ describe('VehicleUsageService', () => {
         { provide: HttpClient, useValue: createSpyFromClass(HttpClient) },
       ],
     });
-    service = TestBed.inject(VehicleUsageService);
+    service = TestBed.inject(TaskService);
     httpSpy = TestBed.inject<any>(HttpClient);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  it('should return a list of vehicles usages', (done: DoneFn) => {
-    httpSpy.get.and.nextWith(fakeVehicleUsages);
+  it('should return a list of Tags usages', (done: DoneFn) => {
+    httpSpy.get.and.nextWith(fakeTasks);
 
     service.getList().subscribe({
-      next: (vehicleUsages) => {
-        expect(vehicleUsages).toHaveSize(fakeVehicleUsages.length);
+      next: (Tasks) => {
+        expect(Tasks).toHaveSize(fakeTasks.length);
         done();
       },
       error: done.fail,
     });
     expect(httpSpy.get.calls.count()).toBe(1);
   });
-  it('should create a new vehicle usage', (done: DoneFn) => {
-    const newVehicleUsage: VehicleUsage = {
+  it('should create a new Tag usage', (done: DoneFn) => {
+    const newTask: Task = {
       id: 3,
-      vehicle: new Vehicle(),
+      title: 'Task 3',
+      description: 'Description 3',
+      dueDate: new Date(),
+      priority: 3,
+      folder: new Folder(),
       employee: new Employee(),
-      fromDate: new Date(),
-      toDate: new Date(),
-      fromLocation: 'Basel',
-      toLocation: 'Chiasso',
-      text: 'Work transfer',
-      km: 340,
+      tags: [new Tag()],
     };
 
-    httpSpy.post.and.nextWith(newVehicleUsage);
+    httpSpy.post.and.nextWith(newTask);
 
-    service.save(newVehicleUsage).subscribe({
-      next: (vehicleUsage) => {
-        expect(vehicleUsage).toEqual(newVehicleUsage);
+    service.save(newTask).subscribe({
+      next: (Task) => {
+        expect(Task).toEqual(newTask);
         done();
       },
       error: done.fail,
@@ -86,15 +84,15 @@ describe('VehicleUsageService', () => {
     expect(httpSpy.post.calls.count()).toBe(1);
   });
 
-  it('should update an vehicle usage', (done: DoneFn) => {
-    const vehicleUsage = fakeVehicleUsages[0];
-    vehicleUsage.text = 'Updated Vehicle Usage';
+  it('should update an Tag usage', (done: DoneFn) => {
+    const Task = fakeTasks[0];
+    Task.text = 'Updated Tag Usage';
 
-    httpSpy.put.and.nextWith(vehicleUsage);
+    httpSpy.put.and.nextWith(Task);
 
-    service.update(vehicleUsage).subscribe({
-      next: (vehicleUsage) => {
-        expect(vehicleUsage.text).toEqual('Updated Vehicle Usage');
+    service.update(Task).subscribe({
+      next: (Task) => {
+        expect(Task.text).toEqual('Updated Tag Usage');
         done();
       },
       error: done.fail,
@@ -102,7 +100,7 @@ describe('VehicleUsageService', () => {
     expect(httpSpy.put.calls.count()).toBe(1);
   });
 
-  it('should delete an existing vehicle usage', (done: DoneFn) => {
+  it('should delete an existing Tag usage', (done: DoneFn) => {
     httpSpy.delete.and.nextWith(
       new HttpResponse({
         status: 200,

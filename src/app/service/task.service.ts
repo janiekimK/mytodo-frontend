@@ -2,39 +2,37 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { VehicleUsage } from '../dataaccess/task';
+import { Task } from '../dataaccess/task';
 
 @Injectable({
   providedIn: 'root',
 })
-export class VehicleUsageService {
-  readonly backendUrl = 'vehicleusage';
+export class TaskService {
+  readonly backendUrl = 'Task';
 
   constructor(private http: HttpClient) {}
 
-  public getList(): Observable<VehicleUsage[]> {
-    return this.http.get<VehicleUsage[]>(
-      environment.backendBaseUrl + this.backendUrl
-    );
+  public getList(): Observable<Task[]> {
+    return this.http.get<Task[]>(environment.backendBaseUrl + this.backendUrl);
   }
 
-  public getOne(id: number): Observable<VehicleUsage> {
-    return this.http.get<VehicleUsage>(
+  public getOne(id: number): Observable<Task> {
+    return this.http.get<Task>(
       environment.backendBaseUrl + this.backendUrl + `/${id}`
     );
   }
 
-  public update(vehicleUsage: VehicleUsage): Observable<VehicleUsage> {
-    return this.http.put<VehicleUsage>(
-      environment.backendBaseUrl + this.backendUrl + `/${vehicleUsage.id}`,
-      vehicleUsage
+  public update(Task: Task): Observable<Task> {
+    return this.http.put<Task>(
+      environment.backendBaseUrl + this.backendUrl + `/${Task.id}`,
+      Task
     );
   }
 
-  public save(vehicleUsage: VehicleUsage): Observable<VehicleUsage> {
-    return this.http.post<VehicleUsage>(
+  public save(Task: Task): Observable<Task> {
+    return this.http.post<Task>(
       environment.backendBaseUrl + this.backendUrl,
-      vehicleUsage
+      Task
     );
   }
 
