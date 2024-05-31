@@ -29,7 +29,7 @@ export class TagDetailComponent extends BaseComponent implements OnInit {
     private router: Router,
     private headerService: HeaderService,
     private route: ActivatedRoute,
-    private TagService: TagService,
+    private tagService: TagService,
     private snackBar: MatSnackBar,
     protected override translate: TranslateService,
     private formBuilder: UntypedFormBuilder
@@ -42,7 +42,7 @@ export class TagDetailComponent extends BaseComponent implements OnInit {
       const id = Number.parseInt(
         this.route.snapshot.paramMap.get('id') as string
       );
-      this.TagService.getOne(id).subscribe((obj) => {
+      this.tagService.getOne(id).subscribe((obj) => {
         this.tag = obj;
         this.headerService.setPage('nav.tag_edit');
         this.objForm = this.formBuilder.group(obj);

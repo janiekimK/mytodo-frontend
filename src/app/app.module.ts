@@ -54,7 +54,7 @@ export const authConfig: AuthConfig = {
   requireHttps: false,
   redirectUri: environment.frontendBaseUrl,
   postLogoutRedirectUri: environment.frontendBaseUrl,
-  clientId: 'mytodo-frontend',
+  clientId: 'mytodo',
   scope: 'openid profile roles offline_access',
   responseType: 'code',
   showDebugInformation: true,
