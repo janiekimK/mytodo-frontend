@@ -22,7 +22,7 @@ export class FolderListComponent
   folderDataSource = new MatTableDataSource<Folder>();
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  columns = ['name', 'actions'];
+  columns = ['id', 'title', 'description'];
 
   public constructor(
     private folderService: FolderService,

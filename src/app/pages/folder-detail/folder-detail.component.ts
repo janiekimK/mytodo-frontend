@@ -43,11 +43,11 @@ export class FolderDetailComponent extends BaseComponent implements OnInit {
 
       this.folderService.getOne(id).subscribe((obj) => {
         this.folder = obj;
-        this.headerService.setPage('nav.vehicle_edit');
+        this.headerService.setPage('nav.tag_edit');
         this.objForm = this.formBuilder.group(obj);
       });
     } else {
-      this.headerService.setPage('nav.vehicle_new');
+      this.headerService.setPage('nav.tag_new');
       this.objForm = this.formBuilder.group(this.folder);
     }
   }

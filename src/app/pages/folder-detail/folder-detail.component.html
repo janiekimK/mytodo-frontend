@@ -20,15 +20,28 @@
       <mat-form-field>
         <mat-label>{{ "folder.title" }}</mat-label>
         <input
-          #inputName
+          #inputTitle
           appAutofocus
-          formControlName="name"
+          formControlName="title"
           matInput
           maxlength="255"
           required
         />
-        <mat-hint align="end">{{ inputName.value.length || 0 }}/255</mat-hint>
+        <mat-hint align="end">{{ inputTitle.value.length || 0 }}/255</mat-hint>
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ "folder.description" }}</mat-label>
+        <textarea
+        #inputDescription
+          formControlName="description"
+          matInput
+          maxlength="1000"
+          required
+        ></textarea>
+        {{ inputDescription.value.length || 0 }}/1000</mat-hint>
+      </mat-form-field>
+
       <button
         [disabled]="!objForm.valid"
         color="primary"
