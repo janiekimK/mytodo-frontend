@@ -44,10 +44,10 @@ import { AutofocusDirective } from './dir/autofocus-dir';
 import { BaseComponent } from './components/base/base.component';
 import { environment } from '../environments/environment';
 import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
-import { TaskListComponent } from './pages/task-list/task-list.component';
 import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
 import { TagListComponent } from './pages/tag-list/tag-list.component';
 import { FolderListComponent } from './pages/folder-list/folder-list.component';
+import { TaskListComponent } from './pages/task-usage-list/task-list.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV',
@@ -89,7 +89,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     TaskListComponent,
     BaseComponent,
     EmployeeDetailComponent,
-    TaskListComponent,
     TagListComponent,
     FolderListComponent,
   ],

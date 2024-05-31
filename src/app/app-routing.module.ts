@@ -9,8 +9,8 @@ import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail
 import { TagListComponent } from './pages/tag-list/tag-list.component';
 import { TagDetailComponent } from './pages/tag-detail/tag-detail.component';
 import { FolderListComponent } from './pages/folder-list/folder-list.component';
-import { TaskListComponent } from './pages/task-list/task-list.component';
 import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
+import { TaskListComponent } from './pages/task-usage-list/task-list.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

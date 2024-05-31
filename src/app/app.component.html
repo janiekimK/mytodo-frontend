@@ -12,34 +12,34 @@
       <div>
         <div>
           <button [routerLink]="['dashboard']" color="primary" mat-button>
-            <mat-icon>dashboard</mat-icon>&nbsp;{{'nav.dashboard' | translate }}</button>
+            <mat-icon>dashboard</mat-icon>&nbsp;{{'dashboard' }}</button>
         </div>
         <div>
           <button [routerLink]="['folder']" color="primary" mat-button>
-            <mat-icon>Folder</mat-icon>&nbsp;{{'nav.folder' | translate }}</button>
+            <mat-icon>Folder</mat-icon>&nbsp;{{'folder' }}</button>
         </div>
         <div>
           <button [routerLink]="['employees']" color="primary" mat-button>
-            <mat-icon>name</mat-icon>&nbsp;{{'nav.employees' | translate }}</button>
+            <mat-icon>name</mat-icon>&nbsp;{{'employees' }}</button>
         </div>
         <div>
           <button [routerLink]="['tag']" color="primary" mat-button>
-            <mat-icon>tag</mat-icon>&nbsp;{{'nav.tag' | translate }}</button>
+            <mat-icon>tag</mat-icon>&nbsp;{{'tag' }}</button>
         </div>
         <div>
           <button [routerLink]="['task']" color="primary" mat-button>
-            <mat-icon>task</mat-icon>&nbsp;{{'nav.task' | translate }}</button>
+            <mat-icon>task</mat-icon>&nbsp;{{'task' }}</button>
         </div>
         <div *ngIf="oauthService.hasValidAccessToken()" style="margin-top: 50px">
           <button (click)="logout()" color="warn" mat-button>
             <mat-icon>logout</mat-icon>
-            {{ 'nav.logout' | translate }}
+            {{ 'logout' }}
           </button>
         </div>
       </div>
       <div style="margin-top: 50px;margin-left: 20px;">
         <mat-form-field style="width: 80%">
-          <mat-label>{{ 'main.lang' | translate }}</mat-label>
+          <mat-label>{{ 'main.lang' }}</mat-label>
           <mat-select #langSelect (valueChange)="setLanguage(langSelect.value)" [value]="translate.currentLang">
             <mat-option value="de_CH">Deutsch</mat-option>
             <mat-option value="en">English</mat-option>
