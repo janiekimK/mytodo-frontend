@@ -18,7 +18,7 @@ import { EmployeeService } from '../../service/employee.service';
 
 @Component({
   selector: 'app-vehicle-usage-detail',
-  templateUrl: './vehicle-usage-detail.component.html',
+  templateUrl: './vehicle-detail.component.html',
   styleUrls: ['./vehicle-usage-detail.component.scss'],
 })
 export class VehicleUsageDetailComponent

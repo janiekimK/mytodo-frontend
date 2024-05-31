@@ -11,7 +11,7 @@ import { VehicleDetailComponent } from './pages/tag-detail/tag-detail.component'
 import { AppRoles } from '../app.roles';
 import { DepartmentDetailComponent } from './pages/folder-detail/folder-detail.component';
 import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
-import { VehicleUsageDetailComponent } from './pages/task-usage-detail/task-detail.component';
+import { VehicleUsageDetailComponent } from './pages/task-detail/task-detail.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },

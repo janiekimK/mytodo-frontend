@@ -20,8 +20,8 @@ import { TagService } from '../../service/tag.service';
 export class TagDetailComponent extends BaseComponent implements OnInit {
   tag = new Tag();
   public objForm = new UntypedFormGroup({
-    licence: new UntypedFormControl(''),
-    tagType: new UntypedFormControl(''),
+    name: new UntypedFormControl(''),
+    task: new UntypedFormControl(''),
     description: new UntypedFormControl(''),
   });
 

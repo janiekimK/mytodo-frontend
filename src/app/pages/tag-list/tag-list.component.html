@@ -21,20 +21,14 @@
         </button>
       </td>
     </ng-container>
-    <ng-container matColumnDef="tagType">
-      <th *matHeaderCellDef mat-header-cell>{{'tag.type' | translate}}</th>
+    <ng-container matColumnDef="task">
+      <th *matHeaderCellDef mat-header-cell>{{'tag.task' | translate}}</th>
       <td *matCellDef="let element" mat-cell>
-        <span *ngIf="element.tagType === 'CAR'">
-          {{ 'tag.typeCar' | translate }}
-        </span>
-        <span *ngIf="element.tagType === 'BICYCLE'">
-          {{ 'tag.typeBicycle' | translate }}
-        </span>
       </td>
     </ng-container>
-    <ng-container matColumnDef="licence">
-      <th *matHeaderCellDef mat-header-cell>{{'Tag.licence' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.licence}} </td>
+    <ng-container matColumnDef="name">
+      <th *matHeaderCellDef mat-header-cell>{{'Tag.name' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.name}} </td>
     </ng-container>
     <ng-container matColumnDef="description">
       <th *matHeaderCellDef mat-header-cell>{{'tag.description' | translate}}</th>

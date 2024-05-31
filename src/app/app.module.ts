@@ -44,7 +44,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FolderDetailComponent } from './pages/folder-detail/folder-detail.component';
 import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
-import { TagDetailComponent } from './pages/task-usage-detail/task-detail.component';
+import { TagDetailComponent } from './pages/task-detail/task-detail.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { AutofocusDirective } from './dir/autofocus-dir';

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VehicleDetailComponent } from './tag-detail.component';
+import { TagDetailComponent } from './tag-detail.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -11,9 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-describe('VehicleDetailComponent', () => {
-  let component: VehicleDetailComponent;
-  let fixture: ComponentFixture<VehicleDetailComponent>;
+describe('TagDetailComponent', () => {
+  let component: TagDetailComponent;
+  let fixture: ComponentFixture<TagDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,12 +33,12 @@ describe('VehicleDetailComponent', () => {
         HttpClientModule,
         BrowserAnimationsModule,
       ],
-      declarations: [VehicleDetailComponent],
+      declarations: [TagDetailComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VehicleDetailComponent);
+    fixture = TestBed.createComponent(TagDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
