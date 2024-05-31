@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
-import { AuthConfig, OAuthModule, OAuthStorage } from 'angular-oauth2-oidc';
+import { OAuthModule, OAuthStorage, AuthConfig } from 'angular-oauth2-oidc';
 import { AppAuthService } from './service/app.auth.service';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { IsInRoleDirective } from './dir/is.in.role.dir';
@@ -46,13 +45,16 @@ import { BaseComponent } from './components/base/base.component';
 import { environment } from '../environments/environment';
 import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
 import { TaskListComponent } from './pages/task-list/task-list.component';
+import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
+import { TagListComponent } from './pages/tag-list/tag-list.component';
+import { FolderListComponent } from './pages/folder-list/folder-list.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV',
   requireHttps: false,
   redirectUri: environment.frontendBaseUrl,
   postLogoutRedirectUri: environment.frontendBaseUrl,
-  clientId: 'demoapp',
+  clientId: 'mytodo-frontend',
   scope: 'openid profile roles offline_access',
   responseType: 'code',
   showDebugInformation: true,
@@ -86,6 +88,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     TaskDetailComponent,
     TaskListComponent,
     BaseComponent,
+    EmployeeDetailComponent,
+    TaskListComponent,
+    TagListComponent,
+    FolderListComponent,
   ],
   imports: [
     BrowserModule,

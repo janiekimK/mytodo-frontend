@@ -16,8 +16,8 @@
     </mat-toolbar>
   </div>
   <div class="app-form">
-    <form (ngSubmit)="save(objForm.value)" [formGroup]="objForm!">
-      <mat-form-field>
+    <form (ngSubmit)="save(objForm.value)" [formGroup]="objForm">
+      <mat-form-field appearance="fill">
         <mat-label>{{ "employee.id" | translate }}</mat-label>
         <input
           #inputid
@@ -29,7 +29,7 @@
         />
         <mat-hint align="end">{{ inputid.value.length || 0 }}/20</mat-hint>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>{{ "employee.name" | translate }}</mat-label>
         <input
           #inputName
@@ -40,7 +40,7 @@
         />
         <mat-hint align="end">{{ inputName.value.length || 0 }}/100</mat-hint>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>{{ "employee.firstname" | translate }}</mat-label>
         <input
           #inputFirstname
@@ -49,11 +49,9 @@
           maxlength="100"
           required
         />
-        <mat-hint align="end"
-          >{{ inputFirstname.value.length || 0 }}/100</mat-hint
-        >
+        <mat-hint align="end">{{ inputFirstname.value.length || 0 }}/100</mat-hint>
       </mat-form-field>
-      <mat-form-field>
+      <mat-form-field appearance="fill">
         <mat-label>{{ "employee.assignedTasks" | translate }}</mat-label>
         <mat-select formControlName="assignedTasksId" required>
           <mat-option
@@ -64,14 +62,16 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <button
-        [disabled]="!objForm.valid"
-        color="primary"
-        mat-raised-button
-        style="width: 200px"
-      >
-        {{ "main.button_save" | translate }}
-      </button>
+      <div style="text-align: center; margin-top: 20px;">
+        <button
+          [disabled]="!objForm.valid"
+          color="primary"
+          mat-raised-button
+          style="width: 200px"
+        >
+          {{ "main.button_save" | translate }}
+        </button>
+      </div>
     </form>
   </div>
 </div>

@@ -28,6 +28,7 @@ export class EmployeeDetailComponent extends BaseComponent implements OnInit {
     firstname: new UntypedFormControl(''),
     folderId: new UntypedFormControl(''),
   });
+  assignedTaskss: any;
 
   constructor(
     private router: Router,
