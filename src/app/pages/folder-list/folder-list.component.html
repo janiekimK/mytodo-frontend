@@ -4,7 +4,7 @@
       <span>
         <button (click)="add()" *appIsInRole="'admin'" color="primary" mat-button style="color: white">
           <mat-icon>add</mat-icon>
-          {{'folder.button_new'}}
+          {{'button_new'}}
         </button>
       </span>
     </mat-toolbar>
@@ -22,11 +22,11 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="title">
-      <th *matHeaderCellDef mat-header-cell>{{'folder.title'}}</th>
+      <th *matHeaderCellDef mat-header-cell>{{'title'}}</th>
       <td *matCellDef="let element" mat-cell> {{element.title}} </td>
     </ng-container>
     <ng-container matColumnDef="description">
-      <th *matHeaderCellDef mat-header-cell>{{'folder.description'}}</th>
+      <th *matHeaderCellDef mat-header-cell>{{'description'}}</th>
       <td *matCellDef="let element" mat-cell> {{element.description}} </td>
     </ng-container>
 

@@ -13,17 +13,17 @@
   <div class="app-form">
     <form (ngSubmit)="save(objForm.value)" [formGroup]="objForm!">
       <mat-form-field>
-        <mat-label>{{ 'tag.name' | translate }}</mat-label>
+        <mat-label>{{ 'name' | translate }}</mat-label>
         <input #inputName appAutofocus formControlName="name" matInput maxlength="20" required>
         <mat-hint align="end">{{inputName.value.length || 0}}/20</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ 'tag.task' | translate }}</mat-label>
+        <mat-label>{{ 'task' | translate }}</mat-label>
         <input #inputTag formControlName="task" matInput maxlength="20" required>
         <mat-hint align="end">{{inputTag.value.length || 0}}/20</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ 'tag.description' | translate }}</mat-label>
+        <mat-label>{{ 'description' | translate }}</mat-label>
         <textarea #inputDesc cdkAutosizeMaxRows="10"
                   cdkAutosizeMinRows="4"
                   cdkTextareaAutosize formControlName="description" matInput maxlength="255"></textarea>

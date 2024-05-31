@@ -42,24 +42,24 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="id">
-      <th *matHeaderCellDef mat-header-cell>{{ "employee.id" }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ "id" }}</th>
       <td *matCellDef="let element" mat-cell>{{ element.id }}</td>
     </ng-container>
     <ng-container matColumnDef="name">
       <th *matHeaderCellDef mat-header-cell>
-        {{ "employee.name" }}
+        {{ "name" }}
       </th>
       <td *matCellDef="let element" mat-cell>{{ element.name }}</td>
     </ng-container>
     <ng-container matColumnDef="firstname">
       <th *matHeaderCellDef mat-header-cell>
-        {{ "employee.firstname" }}
+        {{ "firstname" }}
       </th>
       <td *matCellDef="let element" mat-cell>{{ element.firstname }}</td>
     </ng-container>
     <ng-container matColumnDef="assignedTasks">
       <th *matHeaderCellDef mat-header-cell>
-        {{ "employee.assignedTasks" }}
+        {{ "assignedTasks" }}
       </th>
       <td *matCellDef="let element" mat-cell>
         {{ element.assignedTasks?.name }}

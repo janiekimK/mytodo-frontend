@@ -4,7 +4,7 @@
       <span>
         <button (click)="add()" *appIsInRole="'update'" color="primary" mat-button style="color: white">
           <mat-icon>add</mat-icon>
-          {{ 'task.button_new' }}
+          {{ 'button_new' }}
         </button>
       </span>
     </mat-toolbar>
@@ -22,31 +22,31 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="dueDate">
-      <th *matHeaderCellDef mat-header-cell>{{ 'task.dueDate' }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ 'dueDate' }}</th>
       <td *matCellDef="let element" mat-cell> {{ element.dueDate | date:'dd.MM.yyyy' }} </td>
     </ng-container>
     <ng-container matColumnDef="title">
-      <th *matHeaderCellDef mat-header-cell>{{ 'task.title' }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ 'title' }}</th>
       <td *matCellDef="let element" mat-cell> {{ element.title }} </td>
     </ng-container>
     <ng-container matColumnDef="description">
-      <th *matHeaderCellDef mat-header-cell>{{ 'task.description' }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ 'description' }}</th>
       <td *matCellDef="let element" mat-cell> {{ element.description }} </td>
     </ng-container>
     <ng-container matColumnDef="priority"> 
-      <th *matHeaderCellDef mat-header-cell>{{ 'task.priority' }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ 'priority' }}</th>
       <td *matCellDef="let element" mat-cell> {{ element.priority }} </td>
     </ng-container>
     <ng-container matColumnDef="folder">
-      <th *matHeaderCellDef mat-header-cell>{{ 'task.folder' }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ 'folder' }}</th>
       <td *matCellDef="let element" mat-cell> {{ element.folder?.name }} </td>
     </ng-container>
     <ng-container matColumnDef="employee">
-      <th *matHeaderCellDef mat-header-cell>{{ 'task.employee' }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ 'employee' }}</th>
       <td *matCellDef="let element" mat-cell> {{ element.employee?.id }} </td>
     </ng-container>
     <ng-container matColumnDef="tag">
-      <th *matHeaderCellDef mat-header-cell>{{ 'task.tag' }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ 'tag' }}</th>
       <td *matCellDef="let element" mat-cell> {{ element.tag?.name }} </td>
     </ng-container>
     <tr *matHeaderRowDef="columns" mat-header-row></tr>
