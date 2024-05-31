@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VehicleUsageListComponent } from './task-list.component';
+import { TaskListComponent } from './task-list.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '../../app.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -8,9 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-describe('VehicleUsageListComponent', () => {
-  let component: VehicleUsageListComponent;
-  let fixture: ComponentFixture<VehicleUsageListComponent>;
+describe('TaskListComponent', () => {
+  let component: TaskListComponent;
+  let fixture: ComponentFixture<TaskListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -27,12 +27,12 @@ describe('VehicleUsageListComponent', () => {
         MatDialogModule,
         MatSnackBarModule,
       ],
-      declarations: [VehicleUsageListComponent],
+      declarations: [TaskListComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VehicleUsageListComponent);
+    fixture = TestBed.createComponent(TaskListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

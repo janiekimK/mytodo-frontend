@@ -42,7 +42,7 @@ export class TagDetailComponent extends BaseComponent implements OnInit {
       const id = Number.parseInt(
         this.route.snapshot.paramMap.get('id') as string
       );
-      this.tagService.getOne(id).subscribe((obj) => {
+      this.TagService.getOne(id).subscribe((obj) => {
         this.tag = obj;
         this.headerService.setPage('nav.tag_edit');
         this.objForm = this.formBuilder.group(obj);

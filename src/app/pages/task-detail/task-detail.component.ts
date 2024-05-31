@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Vehicle } from '../../dataaccess/tag';
+import { Tag } from '../../dataaccess/tag';
 import {
   UntypedFormBuilder,
   UntypedFormControl,
@@ -9,34 +9,29 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HeaderService } from '../../service/header.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { VehicleUsage } from '../../dataaccess/task';
+import { Task } from '../../dataaccess/task';
 import { Employee } from '../../dataaccess/employee';
 import { BaseComponent } from '../../components/base/base.component';
-import { VehicleUsageService } from '../../service/task.service';
-import { VehicleService } from '../../service/tag.service';
+import { TaskService } from '../../service/task.service';
 import { EmployeeService } from '../../service/employee.service';
 
 @Component({
-  selector: 'app-vehicle-usage-detail',
-  templateUrl: './vehicle-detail.component.html',
-  styleUrls: ['./vehicle-usage-detail.component.scss'],
+  selector: 'app-tag-detail',
+  templateUrl: './tag-detail.component.html',
+  styleUrls: ['./tag-detail.component.scss'],
 })
-export class VehicleUsageDetailComponent
-  extends BaseComponent
-  implements OnInit
-{
-  vehicleUsage = new VehicleUsage();
-  vehicles: Vehicle[] = [];
+export class TaskDetailComponent extends BaseComponent implements OnInit {
+  task = new Task();
+  tags: Tag[] = [];
   employees: Employee[] = [];
 
   public objForm = new UntypedFormGroup({
-    fromDate: new UntypedFormControl(''),
-    toDate: new UntypedFormControl(''),
-    fromLocation: new UntypedFormControl(''),
-    toLocation: new UntypedFormControl(''),
-    km: new UntypedFormControl(''),
-    text: new UntypedFormControl(''),
-    vehicleId: new UntypedFormControl(''),
+    title: new UntypedFormControl(''),
+    description: new UntypedFormControl(''),
+    dueDate: new UntypedFormControl(''),
+    priority: new UntypedFormControl(''),
+    folderId: new UntypedFormControl(''),
+    tagId: new UntypedFormControl(''),
     employeeId: new UntypedFormControl(''),
   });
 
@@ -44,8 +39,8 @@ export class VehicleUsageDetailComponent
     private router: Router,
     private headerService: HeaderService,
     private route: ActivatedRoute,
-    private vehicleUsageService: VehicleUsageService,
-    private vehicleService: VehicleService,
+    private taskService: TaskService,
+    private tagService: tagService,
     private snackBar: MatSnackBar,
     private employeeService: EmployeeService,
     protected override translate: TranslateService,
@@ -59,25 +54,22 @@ export class VehicleUsageDetailComponent
       const id = Number.parseInt(
         this.route.snapshot.paramMap.get('id') as string
       );
-      this.vehicleUsageService.getOne(id).subscribe((obj) => {
-        this.vehicleUsage = obj;
-        this.headerService.setPage('nav.vehicleUsage_edit');
+      this.taskService.getOne(id).subscribe((obj) => {
+        this.task = obj;
+        this.headerService.setPage('nav.task_edit');
         this.objForm = this.fb.group(obj);
-        this.objForm.addControl(
-          'vehicleId',
-          new UntypedFormControl(obj.vehicle.id)
-        );
+        this.objForm.addControl('tagId', new UntypedFormControl(obj.tag.id));
         this.objForm.addControl(
           'employeeId',
           new UntypedFormControl(obj.employee.id)
         );
       });
     } else {
-      this.headerService.setPage('nav.vehicleUsage_new');
+      this.headerService.setPage('nav.task_new');
     }
 
-    this.vehicleService.getList().subscribe((obj) => {
-      this.vehicles = obj;
+    this.tagService.getList().subscribe((obj) => {
+      this.tags = obj;
     });
     this.employeeService.getList().subscribe((obj) => {
       this.employees = obj;
@@ -85,21 +77,19 @@ export class VehicleUsageDetailComponent
   }
 
   async back() {
-    await this.router.navigate(['vehicle-usages']);
+    await this.router.navigate(['tag']);
   }
 
   async save(formData: any) {
-    this.vehicleUsage = Object.assign(formData);
+    this.task = Object.assign(formData);
 
-    this.vehicleUsage.vehicle = this.vehicles.find(
-      (o) => o.id === formData.vehicleId
-    ) as Vehicle;
-    this.vehicleUsage.employee = this.employees.find(
+    this.task.tag = this.tags.find((o) => o.id === formData.tagId) as Tag;
+    this.task.employee = this.employees.find(
       (o) => o.id === formData.employeeId
     ) as Employee;
 
-    if (this.vehicleUsage.id) {
-      this.vehicleUsageService.update(this.vehicleUsage).subscribe({
+    if (this.task.id) {
+      this.taskService.update(this.task).subscribe({
         next: () => {
           this.snackBar.open(this.messageSaved, this.messageClose, {
             duration: 5000,
@@ -114,7 +104,7 @@ export class VehicleUsageDetailComponent
         },
       });
     } else {
-      this.vehicleUsageService.save(this.vehicleUsage).subscribe({
+      this.taskService.save(this.task).subscribe({
         next: () => {
           this.snackBar.open(this.messageNewSaved, this.messageClose, {
             duration: 5000,

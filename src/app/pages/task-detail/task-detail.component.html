@@ -39,12 +39,27 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ 'tagUsage.text' | translate }}</mat-label>
-        <textarea #inputText cdkAutosizeMaxRows="10"
-                  cdkAutosizeMinRows="4"
-                  cdkTextareaAutosize formControlName="text" matInput maxlength="500"></textarea>
-        <mat-hint align="end">{{inputText.value.length || 0}}/255</mat-hint>
+        <mat-label>{{ 'task.title' | translate }}</mat-label>
+        <input matInput formControlName="title" required>
       </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ 'task.description' | translate }}</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{ 'task.dueDate' | translate }}</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dueDate" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+         <mat-label>{{ 'task.folder' | translate }}</mat-label>
+        <mat-select formControlName="folderId" required>
+          <mat-option *ngFor="let folder of folders" [value]="folder.id">
+            {{ folder.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      
       <button [disabled]="!objForm.valid" color="primary" mat-raised-button style="width: 200px">
         {{ 'main.button_save' | translate }}
       </button>

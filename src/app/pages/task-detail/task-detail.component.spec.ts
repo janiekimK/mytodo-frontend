@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VehicleUsageDetailComponent } from './task-detail.component';
+import { TaskDetailComponent } from './task-detail.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
@@ -13,9 +13,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-describe('VehicleUsageDetailComponent', () => {
-  let component: VehicleUsageDetailComponent;
-  let fixture: ComponentFixture<VehicleUsageDetailComponent>;
+describe('TaskDetailComponent', () => {
+  let component: TaskDetailComponent;
+  let fixture: ComponentFixture<TaskDetailComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -37,12 +37,12 @@ describe('VehicleUsageDetailComponent', () => {
         HttpClientModule,
         BrowserAnimationsModule,
       ],
-      declarations: [VehicleUsageDetailComponent],
+      declarations: [TaskDetailComponent],
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VehicleUsageDetailComponent);
+    fixture = TestBed.createComponent(TaskDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

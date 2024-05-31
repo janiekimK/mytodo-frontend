@@ -4,12 +4,12 @@
       <span>
         <button (click)="add()" *appIsInRole="'update'" color="primary" mat-button style="color: white">
           <mat-icon>add</mat-icon>
-          {{'vehicleUsage.button_new' | translate}}
+          {{'task.button_new' | translate}}
         </button>
       </span>
     </mat-toolbar>
   </div>
-  <table [dataSource]="vehicleUsageDataSource" class="mat-elevation-z8 vehicles-table" mat-table>
+  <table [dataSource]="taskDataSource" class="mat-elevation-z8 tags-table" mat-table>
     <ng-container matColumnDef="actions">
       <th *matHeaderCellDef class="w-75 th-center" mat-header-cell></th>
       <td *matCellDef="let element" mat-cell style="text-align: end">
@@ -21,37 +21,33 @@
         </button>
       </td>
     </ng-container>
-    <ng-container matColumnDef="fromDate">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.fromDate' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.fromDate | date:'dd.MM.yyyy'}} </td>
+    <ng-container matColumnDef="dueDate">
+      <th *matHeaderCellDef mat-header-cell>{{'task.dueDate' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.dueDate | date:'dd.MM.yyyy'}} </td>
     </ng-container>
-    <ng-container matColumnDef="toDate">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.toDate' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.toDate | date:'dd.MM.yyyy'}} </td>
+    <ng-container matColumnDef="title">
+      <th *matHeaderCellDef mat-header-cell>{{'task.title' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.title}} </td>
     </ng-container>
-    <ng-container matColumnDef="fromLocation">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.fromLocation' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.fromLocation}} </td>
+    <ng-container matColumnDef="description">
+      <th *matHeaderCellDef mat-header-cell>{{'task.description' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.description}} </td>
     </ng-container>
-    <ng-container matColumnDef="toLocation">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.toLocation' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.toLocation}} </td>
+    <ng-container matColumnDef="priority">
+      <th *matHeaderCellDef mat-header-cell>{{'task.priority' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.priority}} </td>
     </ng-container>
-    <ng-container matColumnDef="km">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.km' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.km | number: '1.2-2'}} </td>
-    </ng-container>
-    <ng-container matColumnDef="vehicle">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.vehicle' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.vehicle?.licence}} </td>
+    <ng-container matColumnDef="folder">
+      <th *matHeaderCellDef mat-header-cell>{{'task.folder' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.folder?.name}} </td>
     </ng-container>
     <ng-container matColumnDef="employee">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.employee' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.employee?.badge}} </td>
+      <th *matHeaderCellDef mat-header-cell>{{'task.employee' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.employee?.id}} </td>
     </ng-container>
-    <ng-container matColumnDef="text">
-      <th *matHeaderCellDef mat-header-cell>{{'vehicleUsage.text' | translate}}</th>
-      <td *matCellDef="let element" mat-cell> {{element.text}} </td>
+    <ng-container matColumnDef="tag">
+      <th *matHeaderCellDef mat-header-cell>{{'task.tag' | translate}}</th>
+      <td *matCellDef="let element" mat-cell> {{element.tag?.name}} </td>
     </ng-container>
     <tr *matHeaderRowDef="columns" mat-header-row></tr>
     <tr *matRowDef="let row; columns: columns;" mat-row></tr>
