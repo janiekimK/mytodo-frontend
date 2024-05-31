@@ -18,7 +18,7 @@
   <div class="app-form">
     <form (ngSubmit)="save(objForm.value)" [formGroup]="objForm!">
       <mat-form-field>
-        <mat-label>{{ "folder.name" }}</mat-label>
+        <mat-label>{{ "folder.title" }}</mat-label>
         <input
           #inputName
           appAutofocus
@@ -40,3 +40,4 @@
     </form>
   </div>
 </div>
+

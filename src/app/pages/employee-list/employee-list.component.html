@@ -10,7 +10,7 @@
           style="color: white"
         >
           <mat-icon>add</mat-icon>
-          {{ "employee.button_new" | translate }}
+          {{ "employee.button_new" }}
         </button>
       </span>
     </mat-toolbar>
@@ -42,24 +42,24 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="id">
-      <th *matHeaderCellDef mat-header-cell>{{ "employee.id" | translate }}</th>
+      <th *matHeaderCellDef mat-header-cell>{{ "employee.id" }}</th>
       <td *matCellDef="let element" mat-cell>{{ element.id }}</td>
     </ng-container>
     <ng-container matColumnDef="name">
       <th *matHeaderCellDef mat-header-cell>
-        {{ "employee.name" | translate }}
+        {{ "employee.name" }}
       </th>
       <td *matCellDef="let element" mat-cell>{{ element.name }}</td>
     </ng-container>
     <ng-container matColumnDef="firstname">
       <th *matHeaderCellDef mat-header-cell>
-        {{ "employee.firstname" | translate }}
+        {{ "employee.firstname" }}
       </th>
       <td *matCellDef="let element" mat-cell>{{ element.firstname }}</td>
     </ng-container>
     <ng-container matColumnDef="assignedTasks">
       <th *matHeaderCellDef mat-header-cell>
-        {{ "employee.assignedTasks" | translate }}
+        {{ "employee.assignedTasks" }}
       </th>
       <td *matCellDef="let element" mat-cell>
         {{ element.assignedTasks?.name }}

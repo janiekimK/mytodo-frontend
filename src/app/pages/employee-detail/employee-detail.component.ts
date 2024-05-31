@@ -11,8 +11,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Employee } from '../../dataaccess/employee';
 import { BaseComponent } from '../../components/base/base.component';
 import { EmployeeService } from '../../service/employee.service';
-import { Department } from '../../dataaccess/folder';
-import { DepartmentService } from '../../service/folder.service';
+import { Folder } from '../../dataaccess/folder';
+import { FolderService } from '../../service/folder.service';
 
 @Component({
   selector: 'app-employee-detail',
@@ -21,13 +21,12 @@ import { DepartmentService } from '../../service/folder.service';
 })
 export class EmployeeDetailComponent extends BaseComponent implements OnInit {
   employee = new Employee();
-  departments: Department[] = [];
+  folders: Folder[] = [];
 
   public objForm = new UntypedFormGroup({
-    badge: new UntypedFormControl(''),
     name: new UntypedFormControl(''),
     firstname: new UntypedFormControl(''),
-    departmentId: new UntypedFormControl(''),
+    folderId: new UntypedFormControl(''),
   });
 
   constructor(
@@ -38,7 +37,7 @@ export class EmployeeDetailComponent extends BaseComponent implements OnInit {
     private snackBar: MatSnackBar,
     protected override translate: TranslateService,
     private formBuilder: UntypedFormBuilder,
-    private departmentService: DepartmentService
+    private folderService: FolderService
   ) {
     super(translate);
   }
@@ -53,15 +52,15 @@ export class EmployeeDetailComponent extends BaseComponent implements OnInit {
         this.headerService.setPage('nav.employee_edit');
         this.objForm = this.formBuilder.group(obj);
         this.objForm.addControl(
-          'departmentId',
-          new UntypedFormControl(obj.department.id)
+          'folderId',
+          new UntypedFormControl(obj.folder.id)
         );
       });
     } else {
       this.headerService.setPage('nav.employee_new');
     }
-    this.departmentService.getList().subscribe((obj) => {
-      this.departments = obj;
+    this.folderService.getList().subscribe((obj) => {
+      this.folders = obj;
     });
   }
 
@@ -72,9 +71,9 @@ export class EmployeeDetailComponent extends BaseComponent implements OnInit {
   async save(formData: any) {
     this.employee = Object.assign(formData);
 
-    this.employee.department = this.departments.find(
-      (o) => o.id === formData.departmentId
-    ) as Department;
+    this.employee.folder = this.folders.find(
+      (o) => o.id === formData.folderId
+    ) as Folder;
 
     if (this.employee.id) {
       this.employeeService.update(this.employee).subscribe({
