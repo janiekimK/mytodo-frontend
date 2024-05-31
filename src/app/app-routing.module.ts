@@ -6,29 +6,34 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NoAccessComponent } from './pages/no-access/no-access.component';
 import { AppRoles } from '../app.roles';
 import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
+import { TagListComponent } from './pages/tag-list/tag-list.component';
+import { TagDetailComponent } from './pages/tag-detail/tag-detail.component';
+import { FolderListComponent } from './pages/folder-list/folder-list.component';
+import { TaskListComponent } from './pages/task-list/task-list.component';
+import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
   {
-    path: 'vehicles',
-    component: VehicleListComponent,
+    path: 'tags',
+    component: TagListComponent,
     canActivate: [appCanActivate],
     data: { roles: [AppRoles.Read] },
   },
   {
-    path: 'vehicle',
+    path: 'tag',
     canActivate: [appCanActivate],
-    component: VehicleDetailComponent,
+    component: TagDetailComponent,
     pathMatch: 'full',
-    data: { roles: [AppRoles.Admin] },
+    data: { roles: [AppRoles.Update] },
   },
   {
-    path: 'vehicle/:id',
+    path: 'tag/:id',
     canActivate: [appCanActivate],
-    component: VehicleDetailComponent,
+    component: TagDetailComponent,
     pathMatch: 'full',
-    data: { roles: [AppRoles.Admin] },
+    data: { roles: [AppRoles.Update] },
   },
   {
     path: 'employees',
@@ -51,46 +56,46 @@ const routes: Routes = [
     data: { roles: [AppRoles.Admin] },
   },
   {
-    path: 'departments',
-    component: DepartmentListComponent,
+    path: 'folders',
+    component: FolderListComponent,
     canActivate: [appCanActivate],
     data: { roles: [AppRoles.Read] },
   },
   {
-    path: 'department',
+    path: 'folder',
     canActivate: [appCanActivate],
-    component: DepartmentDetailComponent,
+    component: FolderListComponent,
     pathMatch: 'full',
     data: { roles: [AppRoles.Admin] },
   },
   {
-    path: 'department/:id',
+    path: 'folder/:id',
     canActivate: [appCanActivate],
-    component: DepartmentDetailComponent,
+    component: FolderListComponent,
     pathMatch: 'full',
     data: { roles: [AppRoles.Admin] },
-  },
-  {
-    path: 'vehicle-usages',
-    component: VehicleUsageListComponent,
-    canActivate: [appCanActivate],
-    data: { roles: [AppRoles.Read] },
-  },
-  {
-    path: 'vehicle-usage',
-    canActivate: [appCanActivate],
-    component: VehicleUsageDetailComponent,
-    pathMatch: 'full',
-    data: { roles: [AppRoles.Update] },
-  },
-  {
-    path: 'vehicle-usage/:id',
-    canActivate: [appCanActivate],
-    component: VehicleUsageDetailComponent,
-    pathMatch: 'full',
-    data: { roles: [AppRoles.Update] },
   },
   { path: 'noaccess', component: NoAccessComponent },
+  {
+    path: 'tasks',
+    component: TaskListComponent,
+    canActivate: [appCanActivate],
+    data: { roles: [AppRoles.Read] },
+  },
+  {
+    path: 'task',
+    canActivate: [appCanActivate],
+    component: TaskDetailComponent,
+    pathMatch: 'full',
+    data: { roles: [AppRoles.Admin] },
+  },
+  {
+    path: 'task/:id',
+    canActivate: [appCanActivate],
+    component: TaskDetailComponent,
+    pathMatch: 'full',
+    data: { roles: [AppRoles.Admin] },
+  },
 ];
 
 @NgModule({

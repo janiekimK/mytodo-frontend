@@ -14,16 +14,18 @@ import { Employee } from '../../dataaccess/employee';
 import { BaseComponent } from '../../components/base/base.component';
 import { TaskService } from '../../service/task.service';
 import { EmployeeService } from '../../service/employee.service';
-
+import { TagService } from '../../service/tag.service';
+import { Folder } from 'src/app/dataaccess/folder';
 @Component({
-  selector: 'app-tag-detail',
-  templateUrl: './tag-detail.component.html',
-  styleUrls: ['./tag-detail.component.scss'],
+  selector: 'app-task-detail',
+  templateUrl: './task-detail.component.html',
+  styleUrls: ['./task-detail.component.scss'],
 })
 export class TaskDetailComponent extends BaseComponent implements OnInit {
   task = new Task();
   tags: Tag[] = [];
   employees: Employee[] = [];
+  folders: Folder[] = [];
 
   public objForm = new UntypedFormGroup({
     title: new UntypedFormControl(''),
@@ -31,16 +33,17 @@ export class TaskDetailComponent extends BaseComponent implements OnInit {
     dueDate: new UntypedFormControl(''),
     priority: new UntypedFormControl(''),
     folderId: new UntypedFormControl(''),
-    tagId: new UntypedFormControl(''),
+    tagIds: new UntypedFormControl([]),
     employeeId: new UntypedFormControl(''),
   });
+  priorities: any;
 
   constructor(
     private router: Router,
     private headerService: HeaderService,
     private route: ActivatedRoute,
     private taskService: TaskService,
-    private tagService: tagService,
+    private tagService: TagService,
     private snackBar: MatSnackBar,
     private employeeService: EmployeeService,
     protected override translate: TranslateService,
@@ -57,18 +60,21 @@ export class TaskDetailComponent extends BaseComponent implements OnInit {
       this.taskService.getOne(id).subscribe((obj) => {
         this.task = obj;
         this.headerService.setPage('nav.task_edit');
-        this.objForm = this.fb.group(obj);
-        this.objForm.addControl('tagId', new UntypedFormControl(obj.tag.id));
-        this.objForm.addControl(
-          'employeeId',
-          new UntypedFormControl(obj.employee.id)
-        );
+        this.objForm = this.fb.group({
+          title: new UntypedFormControl(obj.title),
+          description: new UntypedFormControl(obj.description),
+          dueDate: new UntypedFormControl(obj.dueDate),
+          priority: new UntypedFormControl(obj.priority),
+          folderId: new UntypedFormControl(obj.folder),
+          tagIds: new UntypedFormControl(obj.tags.map((tag) => tag.id)),
+          employeeId: new UntypedFormControl(obj.employee.id),
+        });
       });
     } else {
       this.headerService.setPage('nav.task_new');
     }
 
-    this.tagService.getList().subscribe((obj) => {
+    this.tagService.getList().subscribe((obj: Tag[]) => {
       this.tags = obj;
     });
     this.employeeService.getList().subscribe((obj) => {
@@ -77,16 +83,17 @@ export class TaskDetailComponent extends BaseComponent implements OnInit {
   }
 
   async back() {
-    await this.router.navigate(['tag']);
+    await this.router.navigate(['tasks']);
   }
 
   async save(formData: any) {
-    this.task = Object.assign(formData);
-
-    this.task.tag = this.tags.find((o) => o.id === formData.tagId) as Tag;
-    this.task.employee = this.employees.find(
-      (o) => o.id === formData.employeeId
-    ) as Employee;
+    this.task = {
+      ...formData,
+      tags: this.tags.filter((tag) => formData.tagIds.includes(tag.id)),
+      employee: this.employees.find(
+        (o) => o.id === formData.employeeId
+      ) as Employee,
+    };
 
     if (this.task.id) {
       this.taskService.update(this.task).subscribe({

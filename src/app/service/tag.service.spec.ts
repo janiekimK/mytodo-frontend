@@ -14,13 +14,13 @@ describe('TagService', () => {
       id: 1,
       name: 'tag1',
       description: 'Test tag 1',
-      task: '123',
+      tasks: [],
     },
     {
       id: 2,
       name: 'tag2',
       description: 'Test tag 2',
-      task: '456',
+      tasks: [],
     },
   ];
 
@@ -54,7 +54,7 @@ describe('TagService', () => {
       id: 3,
       name: 'tag3',
       description: 'Test tag 3',
-      task: '789',
+      tasks: [],
     };
 
     httpSpy.post.and.nextWith(newTag);

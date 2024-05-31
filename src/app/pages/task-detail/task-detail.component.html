@@ -5,7 +5,7 @@
         <span class="toolbar-spacer"></span>
         <button (click)="back()" color="primary" mat-button style="color: white">
           <mat-icon>arrow_back_ios</mat-icon>
-          {{ 'main.button_back' | translate }}
+          {{ 'main.button_back' }}
         </button>
       </mat-toolbar-row>
     </mat-toolbar>
@@ -13,17 +13,15 @@
   <div class="app-form">
     <form (ngSubmit)="save(objForm.value)" [formGroup]="objForm!">
       <mat-form-field>
-        <mat-label>{{ 'task.priority' | translate }}</mat-label>
+        <mat-label>{{ 'task.priority' }}</mat-label>
         <mat-select formControlName="priority" required>
           <mat-option *ngFor="let priority of priorities" [value]="priority">
             {{ priority }}
           </mat-option>
         </mat-select>
       </mat-form-field>
-        </mat-select>
         <mat-form-field>
-      </mat-form-field>
-        <mat-label>{{ 'task.tag' | translate }}</mat-label>
+        <mat-label>{{ 'task.tag' }}</mat-label>
         <mat-select form formControlName="tagId" required>
           <mat-option *ngFor="let tag of tags" [value]="tag.id">
             {{tag.name}}
@@ -31,37 +29,38 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ 'task.employee' | translate }}</mat-label>
+        <mat-label>{{ 'task.employee' }}</mat-label>
         <mat-select formControlName="employeeId" required>
           <mat-option *ngFor="let employee of employees" [value]="employee.id">
-           {{employee.firstname}}&nbsp;{{employee.name}}
+           {{employee.firstName}}&nbsp;{{employee.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ 'task.title' | translate }}</mat-label>
+        <mat-label>{{ 'task.title' }}</mat-label>
         <input matInput formControlName="title" required>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ 'task.description' | translate }}</mat-label>
+        <mat-label>{{ 'task.description' }}</mat-label>
         <textarea matInput formControlName="description" required></textarea>
       </mat-form-field>
       <mat-form-field>
-        <mat-label>{{ 'task.dueDate' | translate }}</mat-label>
+        <mat-label>{{ 'task.dueDate' }}</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="dueDate" required>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-         <mat-label>{{ 'task.folder' | translate }}</mat-label>
+      <mat-form-field>
+         <mat-label>{{ 'task.folder' }}</mat-label>
         <mat-select formControlName="folderId" required>
           <mat-option *ngFor="let folder of folders" [value]="folder.id">
-            {{ folder.name }}
+            {{ folder.title }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       
       <button [disabled]="!objForm.valid" color="primary" mat-raised-button style="width: 200px">
-        {{ 'main.button_save' | translate }}
+        {{ 'main.button_save' }}
       </button>
     </form>
   </div>

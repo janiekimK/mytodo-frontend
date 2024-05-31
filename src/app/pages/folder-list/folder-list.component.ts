@@ -9,6 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 import { Folder } from '../../dataaccess/folder';
 import { BaseComponent } from '../../components/base/base.component';
+import { FolderService } from 'src/app/service/folder.service';
 
 @Component({
   selector: 'app-folder-list',
@@ -35,19 +36,16 @@ export class FolderListComponent
     super(translate);
     this.headerService.setPage('nav.folders');
   }
+  ngAfterViewInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   async ngOnInit() {
     await this.reloadData();
   }
 
-  ngAfterViewInit() {
-    if (this.paginator) {
-      this.folderDataSource.paginator = this.paginator;
-    }
-  }
-
   reloadData() {
-    this.folderService.getList().subscribe((obj) => {
+    this.folderService.getList().subscribe((obj: Folder[]) => {
       this.folderDataSource.data = obj;
     });
   }
@@ -72,7 +70,7 @@ export class FolderListComponent
     dialogRef.afterClosed().subscribe((dialogResult) => {
       if (dialogResult === true) {
         this.folderService.delete(e.id).subscribe({
-          next: (response) => {
+          next: (response: any) => {
             if (response.status === 200) {
               this.snackBar.open(this.deletedMessage, this.closeMessage, {
                 duration: 5000,

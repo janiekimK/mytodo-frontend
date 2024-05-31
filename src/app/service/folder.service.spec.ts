@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FolderService } from './folder.service';
+import { folderService } from './folder.service';
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Folder } from '../dataaccess/folder';
 
 describe('FolderService', () => {
-  let service: FolderService;
+  let service: folderService;
   let httpSpy: Spy<HttpClient>;
 
   const fakeFolders: Folder[] = [
@@ -28,7 +28,7 @@ describe('FolderService', () => {
         { provide: HttpClient, useValue: createSpyFromClass(HttpClient) },
       ],
     });
-    service = TestBed.inject(FolderService);
+    service = TestBed.inject(folderService);
     httpSpy = TestBed.inject<any>(HttpClient);
   });
 
@@ -39,7 +39,7 @@ describe('FolderService', () => {
     httpSpy.get.and.nextWith(fakeFolders);
 
     service.getList().subscribe({
-      next: (Folders) => {
+      next: (Folders: Folder[]) => {
         expect(Folders).toHaveSize(fakeFolders.length);
         done();
       },
@@ -57,7 +57,7 @@ describe('FolderService', () => {
     httpSpy.post.and.nextWith(newFolder);
 
     service.save(newFolder).subscribe({
-      next: (Folder) => {
+      next: (Folder: Folder) => {
         expect(Folder).toEqual(newFolder);
         done();
       },
@@ -73,7 +73,7 @@ describe('FolderService', () => {
     httpSpy.put.and.nextWith(Folder);
 
     service.update(Folder).subscribe({
-      next: (Folder) => {
+      next: (Folder: Folder) => {
         expect(Folder.title).toEqual('Updated Folder');
         done();
       },
@@ -90,7 +90,7 @@ describe('FolderService', () => {
     );
 
     service.delete(1).subscribe({
-      next: (response) => {
+      next: (response: HttpResponse<any>) => {
         expect(response.status).toBe(200);
         done();
       },

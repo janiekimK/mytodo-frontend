@@ -9,11 +9,12 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { BaseComponent } from '../../components/base/base.component';
+import { TagService } from 'src/app/service/tag.service';
 
 @Component({
   selector: 'app-tag-list',
-  templateUrl: './Tag-list.component.html',
-  styleUrls: ['./Tag-list.component.scss'],
+  templateUrl: './tag-list.component.html',
+  styleUrls: ['./tag-list.component.scss'],
 })
 export class TagListComponent
   extends BaseComponent
@@ -36,18 +37,18 @@ export class TagListComponent
     this.headerService.setPage('nav.tags');
   }
 
-  async ngOnInit() {
-    await this.reloadData();
-  }
-
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     if (this.paginator) {
       this.tagDataSource.paginator = this.paginator;
     }
   }
 
+  async ngOnInit() {
+    await this.reloadData();
+  }
+
   reloadData() {
-    this.tagService.getList().subscribe((obj) => {
+    this.tagService.getList().subscribe((obj: Tag[]) => {
       this.tagDataSource.data = obj;
     });
   }
@@ -57,7 +58,7 @@ export class TagListComponent
   }
 
   async add() {
-    await this.router.navigate(['Tag']);
+    await this.router.navigate(['tag']);
   }
 
   delete(e: Tag) {

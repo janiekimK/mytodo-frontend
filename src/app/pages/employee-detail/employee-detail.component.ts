@@ -34,10 +34,10 @@ export class EmployeeDetailComponent extends BaseComponent implements OnInit {
     private headerService: HeaderService,
     private route: ActivatedRoute,
     private employeeService: EmployeeService,
+    private folderService: FolderService,
     private snackBar: MatSnackBar,
     protected override translate: TranslateService,
-    private formBuilder: UntypedFormBuilder,
-    private folderService: FolderService
+    private formBuilder: UntypedFormBuilder
   ) {
     super(translate);
   }
@@ -59,7 +59,7 @@ export class EmployeeDetailComponent extends BaseComponent implements OnInit {
     } else {
       this.headerService.setPage('nav.employee_new');
     }
-    this.folderService.getList().subscribe((obj) => {
+    this.folderService.getList().subscribe((obj: Folder[]) => {
       this.folders = obj;
     });
   }

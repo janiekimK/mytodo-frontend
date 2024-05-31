@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class folderService {
+export class FolderService {
   readonly backendUrl = 'folder';
 
   constructor(private http: HttpClient) {}

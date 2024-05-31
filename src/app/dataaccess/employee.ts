@@ -3,4 +3,5 @@ export class Employee {
   public name!: string;
   public firstName!: string;
   public assignedTasks: Task[] = [];
+  folder: any;
 }

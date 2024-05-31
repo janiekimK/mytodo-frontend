@@ -11,14 +11,11 @@ import { AppAuthService } from './service/app.auth.service';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { IsInRoleDirective } from './dir/is.in.role.dir';
 import { IsInRolesDirective } from './dir/is.in.roles.dir';
-import { TagListComponent } from './pages/tag-list/tag-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { FolderListComponent } from './pages/folder-list/folder-list.component';
 import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
-import { TagListComponent } from './pages/task-usage-list/task-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NoAccessComponent } from './pages/no-access/no-access.component';
 import { AppLoginComponent } from './components/app-login/app-login.component';
@@ -42,15 +39,13 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FolderDetailComponent } from './pages/folder-detail/folder-detail.component';
-import { EmployeeDetailComponent } from './pages/employee-detail/employee-detail.component';
-import { TagDetailComponent } from './pages/task-detail/task-detail.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { AutofocusDirective } from './dir/autofocus-dir';
 import { BaseComponent } from './components/base/base.component';
 import { environment } from '../environments/environment';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { TaskDetailComponent } from './pages/task-detail/task-detail.component';
+import { TaskListComponent } from './pages/task-list/task-list.component';
 
 export const authConfig: AuthConfig = {
   issuer: 'http://localhost:8080/realms/ILV',
@@ -80,20 +75,16 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppComponent,
     IsInRoleDirective,
     IsInRolesDirective,
-    TagListComponent,
-    FolderListComponent,
     EmployeeListComponent,
-    TagUsageListComponent,
     DashboardComponent,
     NoAccessComponent,
     AppLoginComponent,
     AppHeaderComponent,
     TagDetailComponent,
     ConfirmDialogComponent,
-    FolderDetailComponent,
-    EmployeeDetailComponent,
-    TagUsageDetailComponent,
     AutofocusDirective,
+    TaskDetailComponent,
+    TaskListComponent,
     BaseComponent,
   ],
   imports: [
@@ -138,9 +129,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       provide: OAuthStorage,
       useFactory: storageFactory,
     },
-    Location,
     { provide: LocationStrategy, useClass: PathLocationStrategy },
-    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],
 })

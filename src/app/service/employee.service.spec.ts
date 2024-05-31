@@ -3,9 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { EmployeeService } from './employee.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Employee } from '../dataaccess/employee';
-import { Folder } from '../dataaccess/folder';
 import { createSpyFromClass, Spy } from 'jasmine-auto-spies';
-import { Task } from '../dataaccess/task';
 
 describe('EmployeeService', () => {
   let service: EmployeeService;
@@ -15,14 +13,14 @@ describe('EmployeeService', () => {
     {
       id: 1,
       name: 'Meier',
-      firstname: 'Max',
-      assignedTasks: new Task(),
+      firstName: 'Max',
+      assignedTasks: [],
     },
     {
       id: 2,
       name: 'Bianchi',
-      firstname: 'Alessandra',
-      assignedTasks: new Task(),
+      firstName: 'Alessandra',
+      assignedTasks: [],
     },
   ];
 
@@ -55,8 +53,8 @@ describe('EmployeeService', () => {
     const newEmployee: Employee = {
       id: 3,
       name: 'Müller',
-      firstname: 'Max',
-      assignedTasks: new Task(),
+      firstName: 'Max',
+      assignedTasks: [],
     };
 
     httpSpy.post.and.nextWith(newEmployee);

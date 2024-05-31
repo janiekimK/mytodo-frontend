@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { HeaderService } from '../../service/header.service';
 import { MatTableDataSource } from '@angular/material/table';
-import { Tag } from '../../dataaccess/tag';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -13,9 +12,9 @@ import { BaseComponent } from '../../components/base/base.component';
 import { TaskService } from '../../service/task.service';
 
 @Component({
-  selector: 'app-tag-usage-list',
-  templateUrl: './tag-usage-list.component.html',
-  styleUrls: ['./tag-usage-list.component.scss'],
+  selector: 'app-task-list',
+  templateUrl: './task-list.component.html',
+  styleUrls: ['./task-list.component.scss'],
 })
 export class TaskListComponent
   extends BaseComponent
@@ -29,9 +28,10 @@ export class TaskListComponent
     'description',
     'dueDate',
     'priority',
-    'folderId',
-    'tagId',
-    'employeeId',
+    'folder',
+    'tag',
+    'employee',
+    'actions',
   ];
 
   public constructor(
@@ -62,12 +62,12 @@ export class TaskListComponent
     });
   }
 
-  async edit(e: Tag) {
-    await this.router.navigate(['tag', e.id]);
+  async edit(e: Task) {
+    await this.router.navigate(['task', e.id]);
   }
 
   async add() {
-    await this.router.navigate(['tag']);
+    await this.router.navigate(['task']);
   }
 
   delete(e: Task) {

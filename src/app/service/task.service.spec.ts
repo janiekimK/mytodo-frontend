@@ -48,19 +48,21 @@ describe('TaskService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
-  it('should return a list of Tags usages', (done: DoneFn) => {
+
+  it('should return a list of Tasks', (done: DoneFn) => {
     httpSpy.get.and.nextWith(fakeTasks);
 
     service.getList().subscribe({
-      next: (Tasks) => {
-        expect(Tasks).toHaveSize(fakeTasks.length);
+      next: (tasks) => {
+        expect(tasks).toHaveSize(fakeTasks.length);
         done();
       },
       error: done.fail,
     });
     expect(httpSpy.get.calls.count()).toBe(1);
   });
-  it('should create a new Tag usage', (done: DoneFn) => {
+
+  it('should create a new Task', (done: DoneFn) => {
     const newTask: Task = {
       id: 3,
       title: 'Task 3',
@@ -75,8 +77,8 @@ describe('TaskService', () => {
     httpSpy.post.and.nextWith(newTask);
 
     service.save(newTask).subscribe({
-      next: (Task) => {
-        expect(Task).toEqual(newTask);
+      next: (task) => {
+        expect(task).toEqual(newTask);
         done();
       },
       error: done.fail,
@@ -84,15 +86,14 @@ describe('TaskService', () => {
     expect(httpSpy.post.calls.count()).toBe(1);
   });
 
-  it('should update an Tag usage', (done: DoneFn) => {
-    const Task = fakeTasks[0];
-    Task.text = 'Updated Tag Usage';
+  it('should update a Task', (done: DoneFn) => {
+    const task = { ...fakeTasks[0], title: 'Updated Task Title' };
 
-    httpSpy.put.and.nextWith(Task);
+    httpSpy.put.and.nextWith(task);
 
-    service.update(Task).subscribe({
-      next: (Task) => {
-        expect(Task.text).toEqual('Updated Tag Usage');
+    service.update(task).subscribe({
+      next: (updatedTask) => {
+        expect(updatedTask.title).toEqual('Updated Task Title');
         done();
       },
       error: done.fail,
@@ -100,7 +101,7 @@ describe('TaskService', () => {
     expect(httpSpy.put.calls.count()).toBe(1);
   });
 
-  it('should delete an existing Tag usage', (done: DoneFn) => {
+  it('should delete an existing Task', (done: DoneFn) => {
     httpSpy.delete.and.nextWith(
       new HttpResponse({
         status: 200,
